@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   # resources :locations
   # resources :items
   # resources :menu_items
+  get '/stores', to: 'store#get_nearby_stores'
+  get '/stores/:store_id/menu', to: 'store#get_menu'
 
 end
