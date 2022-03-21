@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220315101055) do
+ActiveRecord::Schema.define(version: 20220321075136) do
 
   create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "cart_id"
     t.bigint "menu_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.float "discount_percentage", limit: 24
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
   end
@@ -44,8 +46,8 @@ ActiveRecord::Schema.define(version: 20220315101055) do
     t.string "state"
     t.integer "pincode"
     t.string "address_line"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "menu_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -57,6 +59,30 @@ ActiveRecord::Schema.define(version: 20220315101055) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_menu_items_on_item_id"
     t.index ["store_id"], name: "index_menu_items_on_store_id"
+  end
+
+  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "order_id"
+    t.bigint "menu_item_id"
+    t.integer "quantity"
+    t.float "discount_percentage", limit: 24
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_order_items_on_menu_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "assigned_delivery_person_id"
+    t.index ["assigned_delivery_person_id"], name: "index_orders_on_assigned_delivery_person_id"
+    t.index ["store_id"], name: "index_orders_on_store_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,6 +97,14 @@ ActiveRecord::Schema.define(version: 20220315101055) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_stores_on_location_id"
+  end
+
+  create_table "user_availabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_availabilities_on_user_id"
   end
 
   create_table "user_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -104,7 +138,13 @@ ActiveRecord::Schema.define(version: 20220315101055) do
   add_foreign_key "carts", "users"
   add_foreign_key "menu_items", "items"
   add_foreign_key "menu_items", "stores"
+  add_foreign_key "order_items", "menu_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "stores"
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", column: "assigned_delivery_person_id"
   add_foreign_key "stores", "locations"
+  add_foreign_key "user_availabilities", "users"
   add_foreign_key "user_locations", "locations"
   add_foreign_key "user_locations", "users"
   add_foreign_key "user_roles", "roles"
