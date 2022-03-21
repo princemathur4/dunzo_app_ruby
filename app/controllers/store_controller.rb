@@ -1,18 +1,17 @@
 require_relative '../helpers/common/location_helper'
+require_relative '../services/location_service'
 
 
 class StoreController < ApplicationController
     include Common::LocationHelper
+    include LocationService
 
     def get_nearby_stores
-        user_location_result = Location.joins(
-            :user_locations
-        ).where({
-            'user_locations.user_id' => params[:user_id]
-        }).first
+        user_location_result = get_user_location(user_id=params[:user_id])
         if user_location_result.nil?
             return render json: {status: true, message: ""}, status: :ok
         end
+        
         user_location = [user_location_result.latitude, user_location_result.longitude]
 
         all_stores = Store.select(
