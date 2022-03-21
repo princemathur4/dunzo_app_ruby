@@ -1,4 +1,4 @@
-class LocationService
+module LocationService
     def get_user_location(user_id)
         user_location_result = Location.joins(
             :user_locations

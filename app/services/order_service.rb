@@ -2,10 +2,12 @@ module OrderService
     def find_pending_order(user_id)
         order_obj = Order.find_by!(user_id:user_id, status: :PAYMENT_PENDING)
         return order_obj
+    end
     
     def get_store_id(user_id)
         store_id = Cart.find_by!(user_id: user_id).store_id
         return store_id
+    end
 
     def find_or_create_new_order(user_id, store_id)
         order_id = nil

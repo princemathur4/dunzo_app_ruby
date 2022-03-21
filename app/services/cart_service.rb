@@ -1,7 +1,8 @@
 module CartService
     def find_cart(user_id)
         return Cart.find_by!(user_id: user_id)
-
+    end
+    
     def find_or_create_cart(user_id, store_id)
         cart_id = nil
         begin
