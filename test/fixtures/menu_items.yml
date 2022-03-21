@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store: one
+  item: one
+  item_price: 1.5
+  available_quantity: 1
+
+two:
+  store: two
+  item: two
+  item_price: 1.5
+  available_quantity: 1
