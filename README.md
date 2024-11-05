@@ -13,15 +13,15 @@
 
 ##  Table of Contents
 
-- [ Overview](#-overview)
-- [ Features](#-features)
-- [ Project Structure](#-project-structure)
-- [ Getting Started](#-getting-started)
-  - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
-- [ Project Roadmap](#-project-roadmap)
+- [ Overview](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#overview)
+- [ Features](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#features)
+- [ Project Structure](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#project-structure)
+- [ Getting Started](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#getting-started)
+  - [ Prerequisites](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#prerequisites)
+  - [ Installation](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#installation)
+  - [ Usage](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#usage)
+  - [ Testing](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#testing)
+- [ Project Roadmap](https://github.com/princemathur4/dunzo_app_ruby/blob/main/README.md#project-roadmap)
 
 ---
 
