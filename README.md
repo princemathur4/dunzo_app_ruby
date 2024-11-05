@@ -1,4 +1,4 @@
-<p align="center"><h1 align="center">DUNZO APP  (Ruby on rails) </h1></p>
+<p align="center"><h1 align="center">Dunzo Backend (Ruby on rails) </h1></p>
 <p align="center">
 	<img src="https://img.shields.io/github/last-commit/princemathur4/dunzo_app_ruby?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
 	<img src="https://img.shields.io/github/languages/top/princemathur4/dunzo_app_ruby?style=default&color=0080ff" alt="repo-top-language">
